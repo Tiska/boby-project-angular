@@ -1,0 +1,52 @@
+<div ng-if="displayLateralPanel" class="lateralPanel" ui-sref="home">
+    <div class="lateralHomePart">
+        <div class="openLateralMenuTrigger openPanel hidden">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </div>
+        <!--FIXME a priori c'est la classe open panel qui ouver le menu qui nous gène<div class="spinner-cube homeIcon openPanel">-->
+        <div class="spinner-cube homeIcon">
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+
+            <div class="roundedMenu" ng-if="displayDecoLangButton">
+                <div ng-click="disconnect()"><span class="glyphicon glyphicon-log-out"></span></div>
+                <div class="idioms">
+                    <span class="glyphicon glyphicon-certificate"></span>
+                    <span class="idiom" ng-click="changeStyleDirective(1)">LV</span>
+                    <span class="idiom" ng-click="changeStyleDirective(2)">Psg</span>
+                </div>
+                <div class="idioms">
+                    <span class="glyphicon glyphicon-flag"></span>
+                    <span class="idiom" ng-click="changeLanguageDirective('en')" data-translate="home.english"></span>
+                    <span class="idiom" ng-click="changeLanguageDirective('fr')" data-translate="home.french"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="lateralMenuPart minimized">
+        <div class="lateralMenuContent">
+        </div>
+    </div>
+</div>
+
+<div ng-if="displayHeaderTop" class="header">
+    <span class="icon glyphicon glyphicon-plus"></span>
+    <span class="title">{{headerTopTitle}}</span>
+        <span ng-if="displayHeaderTopOpenLateralOption" class="actionBtn pull-right"  ng-click="headerTopOpenLateralOption()">
+            <span class="actionLabel">{{'common.action' | translate}}</span>
+            <span class="glyphicon glyphicon-play"></span>
+        </span>
+        <span class="saveDismissBloc col-xs-12">
+            <span class="save pull-right" ng-if="displayHeaderTopNext" ng-click="headerTopNext()">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span>{{'common.next' | translate}}</span>
+            </span>
+            <span class="closeTile pull-right"  ng-if="displayHeaderTopCancel" ng-click="headerTopCancel()">
+                <span class="glyphicon glyphicon-remove"></span>
+                <span>{{'common.cancel' | translate}}</span>
+            </span>
+        </span>
+</div>

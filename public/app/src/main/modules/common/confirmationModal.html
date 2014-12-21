@@ -1,0 +1,18 @@
+<div class="modal confirmationModal" id="recapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="question">
+                    <p class="title">{{'common.confirmation' | translate}}</p>
+                    <p class="bigDesc">{{ confirmationContent }}</p>
+                </div>
+
+                <div class="buttons col-xs-12">
+                    <button type="button" class="col-xs-6 btn btn-lg btn-danger" ng-click="cancel()" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;{{'common.no' | translate}}</button>
+                    <button type="button" class="col-xs-6 btn btn-lg btn-success" ng-click="confirmation()"><span class="glyphicon glyphicon-ok"></span>&nbsp;{{'common.yes' | translate}}</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

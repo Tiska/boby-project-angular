@@ -1,0 +1,160 @@
+﻿{
+    "common": {
+        "cancel": "Annuler",
+        "order":"Réserver",
+        "event":"Evenement",
+        "price":"Prix",
+        "action": "Actions",
+        "confirmation":"Confirmation",
+        "next": "Suivant",
+        "empty":"Ce champ est requis",
+        "min":"La valeur 0 n'est pas acceptée, laissez  ce champ vide ou renseignez un montant strictement supérieur à 0",
+        "number":"Ce champ doit être un nombre",
+        "email":"Mauvais format d'email",
+        "maxlength":"Ce champ ne doit pas dépasser 5 caractères",
+        "timepickererror":"Format de l'heure non valide (hh:mm)",
+        "date":"Format de la date non valide",
+        "warning":"Attention !",
+        "no":"Non",
+        "yes":"Oui",
+        "error": "Erreur",
+        "datepicker":"JJ/MM/AAAA",
+        "timepicker":"HH:MM",
+        "abandon":"Attention, toutes les modifications apportées ne seront pas sauvegardées. Etes-vous sûr ?",
+        "create": "Créer",
+        "continue": "Poursuivre",
+        "results": "résultat(s)",
+        "search": "Rechercher",
+        "select": "Sélectionner"
+    },
+    "authentication": {
+        "title": "Identification",
+        "login": "Nom d'utilisateur",
+        "login.required": "Merci de renseigner vos identifiants",
+        "password": "Mot de passe",
+        "login.invalid": "Identifiants invalides",
+        "submit": "Se connecter",
+        "remember": "Se souvenir de moi",
+        "forgot": "Mot de passe oublié?"
+    },
+    "home": {
+        "create": "Créer",
+        "quick": {
+            "quick":"Rapide",
+            "create":"Créer",
+            "title":"TITRE DE L'ÉVÈNEMENT",
+            "myevent":"Mon évènement",
+            "site":"Lieu de l'évènement",
+            "nosite":"Aucun lieu défini",
+            "addsite":"Ajouter un lieu",
+            "description":"Description",
+            "typeofevent":"Genre de l'évènement",
+            "visual":"VISUEL",
+            "load":"Charger une image",
+            "imagesize":"L'image spécifiée doit être une image gif, png, jpeg ou jpg et doit respecter une résolution d'au plus 300 x 375 et un poids inférieur à 50ko ",
+            "the":"Le",
+            "at":"à",
+            "quota":"QUOTA",
+            "max":"Nombre de places maximum",
+            "tva":"TAUX DE TVA",
+            "currency":"DEVISE",
+            "rates":"TARIFS",
+            "rate":{
+                "name":"Nom",
+                "new":"Nouveau",
+                "price":"Prix",
+                "quota":"Quota"
+            },
+            "noprice":"Vous n'avez renseigné aucun tarif, veuillez en ajouter un",
+            "addprice":"Ajouter un tarif",
+            "address":"Adresse",
+            "code":"Code Postal",
+            "city":"Ville",
+            "complementaddress":"complément, rue, numéro",
+            "sitedescription":"Description du lieu",
+            "errorcreate": "Une erreur est survenue lors de la création de la manifestation",
+            "help":{
+                "precisions":"Indiquer le titre de votre événement qui sera présenté lors de la mise en vente",
+                "chooseplace":"Choisir un lieu pour votre événement ou l'ajouter en cliquant sur 'Ajouter un lieu",
+                "describe":"Décrire votre événement tel qu'il sera présenté à la vente",
+                "typeofevent":"Préciser le genre de votre événement afin de faciliter sa recherche",
+                "the":"Saisir la première date de votre événement. Vous pourrez en rajouter après la validation de ce formulaire",
+                "at":"Préciser l'heure de début de votre événement",
+                "quota":"Indiquer le nombre total de billets ouvert à la vente",
+                "tva":"Indiquer à quel taux de TVA  votre événement est soumis",
+                "currency":"Préciser la devise utilisée pour gérer votre événement",
+                "price":"Renseigner les différents tarifs proposés en cliquant sur le lien 'Ajouter un tarif'. Vous pourrez préciser : le nom du tarif, son prix TTC et son quota, c'est-à-dire le nombre total de billets pouvant être vendu à ce tarif pour une séance."
+            }
+        },
+        "advanced": "Avancé",
+        "myevents": "Mes événements",
+        "allevents": "Tous mes événements",
+        "sale": "Vendre",
+        "clients": "Mes clients",
+        "orders": "Mes commandes",
+        "control": "Contrôler",
+        "myplaces": "Mes lieux",
+        "myrooms": "Mes salles",
+        "myaccesses": "Mes points d'accès",
+        "graphicchart": "Charte graphique",
+        "inputs": "Inputs",
+        "alerts": "Alertes",
+        "lists": "Listes",
+        "english":"EN",
+        "french":"FR"
+    },
+    "sale": {
+        "sale": "Vendre",
+        "resultNumber":"résultat(s)",
+        "bookmark":{
+            "placesDisponibles":"places disponibles",
+            "choose":"Choix de la manifestation",
+            "select":"(Selectionner une manifestation dans le liste ci-dessous)"
+        },
+        "reserveOk":"Toutes les places ont été correctement réservées, merci de renseigner le type de paiement effectué",
+        "cb":"CB",
+        "cash":"Espèces",
+        "abandon":"Abandonner",
+        "recap":{
+          "title":"Récapitulatif de la commande",
+          "reservedQuantity":"billet(s) réservé(s)",
+          "askedQuantity":"billet(s) demandé(s)",
+          "valid":"Ok",
+          "warning":"Réservation partielle",
+          "danger":"Plus de places disponibles",
+          "abort":"Abandonner",
+          "continue":"Continuer"
+        },
+        "payment": {
+            "error":"Une erreur est survenue lors du paiement",
+            "title":"Paiement",
+            "abandonOrder":"Voulez-vous vraiment abandonner ?"
+        },
+        "order": {
+            "cancel":"Une erreur est survenue lors de l'annulation du paiement"
+        },
+        "print":{
+            "title":"Impression des billets",
+            "subtitle":"Souhaitez-vous imprimer les billets du client ?",
+            "paymentValid":"Oui, le paiement est validé"
+        },
+        "contact" :{
+            "title": "Client",
+            "text": "Toutes vos commandes ont été correctement réservées",
+            "existing": "Déjà existant",
+            "new": "Nouveau",
+            "name": "NOM/ RAISON SOCIALE",
+            "firstname": "PRENOM",
+            "email":"E-mail",
+            "phone":"Téléphone",
+            "errorCreation" : "Une erreur est survenue à la création du contact",
+            "errorAssociation" : "Une erreur est survenue à l'association du contact"
+        }
+    },
+	"site":{
+		"emptySiteListResult":"La liste est vide, veuillez ajouter un élément."
+	},
+    "todo": {
+        "todo": "A faire"
+    }
+}

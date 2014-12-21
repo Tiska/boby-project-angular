@@ -1,0 +1,100 @@
+{
+    "common": {
+        "cancel": "Cancel",
+        "next": "Suivant",
+        "order":"Réserver",
+        "event":"Evenement",
+        "price":"Prix",
+        "action": "Actions",
+        "empty":"Ce champ est requis.",
+        "min":"Ce champ ne peut pas avoir la valeur 0.",
+        "number":"Ce champ doit être un nombre.",
+        "maxlength":"Ce champ ne doit pas dépasser 5 caractères.",
+        "timepicker":"Ce champ doit avoir le format HH:MM.",
+        "date":"Ce champ doit être une date.",
+        "warning":"Attention !",
+        "errorcreate":"Une erreur est survenue lors de la création de la manifestation, réassayez plus tard.",
+        "no":"Non",
+        "yes":"oui"
+    },
+    "authentication": {
+        "title": "Identification",
+        "login": "Nom d'utilisateur",
+        "login.required": "Merci de renseigner vos identifiants",
+        "password": "Password",
+        "login.invalid": "Identifiants invalides",
+        "submit": "Se connecter",
+        "remember": "Se souvenir de moi",
+        "forgot": "Mot de passe oublié?"
+    },
+    "home": {
+        "create": "Create",
+        "quick": {
+            "quick":"Quick",
+            "create":"Créer",
+            "title":"EVENT TITLE",
+            "myevent":"My event",
+            "site":"EVENT SITE",
+            "nosite":"No sites availables",
+            "addsite":"Add a site",
+            "description":"Description",
+            "typeofevent":"Type of event",
+            "visual":"VISUAL",
+            "load":"Upload a picture",
+            "the":"The",
+            "at":"at",
+            "quota":"QUOTA",
+            "max":"Maximum sites",
+            "tva":"VAT",
+            "currency":"CURRENCY",
+            "rates":"PRICES",
+            "rate":{
+                "name":"Nom",
+                "price":"Prix",
+                "quota":"Quota"
+            },
+            "noprice":"Vous n'avez renseigné aucun tarif, veuillez en ajouter un.",
+            "addprice":"Ajouter un tarif",
+            "address":"Address",
+            "code":"Code",
+            "city":"City",
+            "complementaddress":"complement, rue, numero",
+            "sitedescription":"Description du lieu",
+            "help":{
+                "precisions":"Precise the title of your event, which will be presented at the sale.",
+                "chooseplace":"Choose a place for your event, or if there is not you can add it by clicking ' Add a Place' ",
+                "describe":"Describe your event as it will be offered for sale.",
+                "typeofevent":"Specify the type of your event to facilitate the search for your events.",
+                "the":"Enter your first date of your event, you will after validation of this form to add more.",
+                "at":"Specify if necessary the start time of your event.",
+                "tva":"Indicate at what rate of VAT is submitted your event",
+                "currency":"Specify the currency used to manage your event"
+            }
+        },
+        "advanced": "Advanced",
+        "myevents": "My events",
+        "allevents": "All my events",
+        "sale": "Sale",
+        "clients": "My customers",
+        "orders": "My orders",
+        "control": "Control",
+        "myplaces": "My places",
+        "myrooms": "My rooms",
+        "myaccesses": "My access points",
+        "graphicchart": "Graphic chart",
+        "inputs": "Inputs",
+        "alerts": "Alerts",
+        "lists": "Lists",
+        "english":"EN",
+        "french":"FR"
+    },
+    "sale": {
+        "sale": "Sale",
+        "bookmark":{
+            "placesDisponibles":"places disponibles"
+        }
+    },
+    "todo": {
+        "todo": "TODO"
+    }
+}

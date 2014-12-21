@@ -1,0 +1,7 @@
+<div class="alert alert-danger alert-dismissible" ng-show="content">
+    <button type="button" class="close" ng-click="content = ''">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <strong>{{ title | translate }}</strong> {{ content | translate }}
+</div>

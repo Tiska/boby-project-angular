@@ -1,0 +1,7 @@
+<div class="alert alert-success alert-dismissible" ng-show="$parent.banner.valid">
+    <button type="button" class="close" ng-click="$parent.banner.valid = false">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <strong> {{ titleBannerMessage | translate }}</strong> {{ contentBannerMessage | translate }}
+</div>

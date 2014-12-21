@@ -1,0 +1,37 @@
+<div layout="column" layout-fill>
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content class="md-padding">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+          Close Sidenav Left
+        </md-button>
+        <p hide-md show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>
+    </md-sidenav>
+    <div flex class="md-padding">
+      <div layout="row" layout-fill layout-align="center center">
+        <md-button class="md-colored" aria-label="New document">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Ajouter un client</p>
+        </md-button>
+        <md-button class="md-colored" aria-label="New document">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Client Existant</p>
+        </md-button>
+        <md-button class="md-colored" aria-label="New document">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Sans client</p>
+        </md-button>
+        <md-button ng-click="toggleLeft()" class="md-primary">
+          Menu
+        </md-button>
+      </div>
+    </div>
+  </section>
+</div>

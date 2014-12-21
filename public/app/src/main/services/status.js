@@ -1,0 +1,12 @@
+var Status = {
+    'ERREUR_INCONNUE': -1,
+    'OK': 0,
+    'ERREUR_TECHNIQUE': 1,
+    'TOKEN_INVALIDE': 2,
+    'TOKEN_EXPIRE': 3,
+    'NON_AUTORISE': 4,
+    'PARAMETRES_ENTREE': 5,
+
+    'ERREUR_IDENTIFICATION_INCORRECTE': 1000
+};
+
