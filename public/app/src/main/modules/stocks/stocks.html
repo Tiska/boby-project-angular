@@ -1,0 +1,84 @@
+<div layout="column" layout-align="space-between" layout-fill>
+  <section layout="row" flex >
+
+    <slide-menu>
+    </slide-menu>
+
+    <div flex class="md-padding">
+      <div layout="row" layout-fill layout-align="center center">
+        <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Ajouter un produit</p>
+        </md-button>
+        <md-button class="md-colored" aria-label="New document" ng-click="loadPrestationCategories();produit = false;prestation = true;newPrestationCategorie = false;newProduitCategorie = false;">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Ajouter une prestation</p>
+        </md-button>
+      </div>
+
+    </div>
+  </section>
+
+  <section layout="row" flex style="margin-top: 20px">
+    <div flex class="md-padding">
+      <div layout="column" layout-fill layout-align="space-around center">
+
+        <md-list class="animate-show clientList" ng-show="prestation == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="prestation in prestationCategories | filter:searchText">
+            <md-item-content>
+              <div class="md-tile-content">
+                <p>{{prestation.libellePrestationCategorie}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <md-list class="animate-show clientList" ng-show="produit == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="produit in produitCategories | filter:searchText">
+            <md-item-content>
+              <div class="md-tile-content">
+                <p>{{produit.libelleProduitCategorie}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <md-button style="margin-top: 20px" ng-show="prestation == true;" ng-click="newPrestationCategorie = true;prestation = false;" class="md-raised md-warn">Ajouter une catégorie de prestation</md-button>
+        <md-button style="margin-top: 20px" ng-show="produit == true;" ng-click="newProduitCategorie = true;produit = false;" class="md-raised md-warn">Ajouter une catégorie de produit</md-button>
+
+        <form class="animate-show" name="produitCategorieForm" ng-show="newProduitCategorie == true;" novalidate style="width: 500px;">
+          <div class="formColumn">
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitCategorieForm.libelleProduitCategorie.$invalid && produitCategorieFormSubmitted}">
+              Libelle : <input type="text" class="form-control" maxlength="100" name="libelleProduitCategorie" autofocus="autofocus" ng-model="categorieProduit.libelleProduitCategorie" required>
+              <div ng-messages="produitCategorieFormSubmitted && (produitCategorieForm.libelleProduitCategorie.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <md-button ng-click="produitCategorieFormSubmitted = true;submitProduitCategorie();" class="md-raised md-warn">Enregistrer</md-button>
+            <md-button ng-click="newProduitCategorie = false;produit = true;" class="md-raised md-warn">Annuler</md-button>
+          </div>
+        </form>
+
+        <form class="animate-show" name="prestationCategorieForm" ng-show="newPrestationCategorie == true;" novalidate style="width: 500px;">
+          <div class="formColumn">
+            <div class="form-group" ng-class="{'has-error has-feedback' : prestationCategorieForm.libellePrestationCategorie.$invalid && prestationCategorieFormSubmitted}">
+              Libelle : <input type="text" class="form-control" maxlength="100" name="libellePrestationCategorie" autofocus="autofocus" ng-model="categoriePrestation.libellePrestationCategorie" required>
+              <div ng-messages="prestationCategorieFormSubmitted && (prestationCategorieForm.libellePrestationCategorie.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <md-button ng-click="prestationCategorieFormSubmitted = true;submitPrestationCategorie();" class="md-raised md-warn">Enregistrer</md-button>
+            <md-button ng-click="newPrestationCategorie = false;prestation = true;" class="md-raised md-warn">Annuler</md-button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</div>

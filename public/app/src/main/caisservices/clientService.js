@@ -2,7 +2,8 @@
 angular.module('caisseServices').factory('ClientService',
   function($http){
     return {
-      addClient: addClient
+      addClient: addClient,
+      getClients: getClients
     };
 
     function addClient(client) {
@@ -15,5 +16,15 @@ angular.module('caisseServices').factory('ClientService',
             return response.data;
         });
     }
+
+    function getClients () {
+      return $http({
+        method: "get",
+        url: "/services/client/list"
+      })
+        .then(function(response) {
+          return response.data;
+        });
+    };
 
   });

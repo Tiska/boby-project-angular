@@ -26,6 +26,7 @@ angular
         'ui.sortable',
         services,
         'home',
+        'stocks',
         'ngMaterial'
     ])
 

@@ -9,14 +9,7 @@
  */
 angular.module('home')
   .controller('HomeController',
-  function ($rootScope, $scope, $mdSidenav,$mdToast, $log,$http) {
-
-    $scope.toggleMenu = function() {
-      $mdSidenav('menu').toggle()
-        .then(function(){
-          $log.debug("toggle menu is done");
-        });
-    };
+  function ($rootScope, $scope, $mdToast, $log,$http, ClientService) {
 
     $scope.toastPosition = {
       bottom: false,
@@ -37,7 +30,7 @@ angular.module('home')
 
       if ($scope.clientForm.$valid) {
 
-        $scope.addClient($scope.client).then(function (r) {
+        ClientService.addClient($scope.client).then(function (r) {
           if (r.status == 0) {
             $log.info('Création réussie ! ');
             $mdToast.show(
@@ -58,38 +51,10 @@ angular.module('home')
       }
     };
 
-
-
-    /*
-      TODO debugger cette merde de services !
-     */
-    $scope.addClient = function (client) {
-      return $http({
-        method: "post",
-        url: "/services/client/",
-        data: client
-      })
-        .then(function(response) {
-          return response.data;
-        });
+    $scope.loadClients = function(){
+      ClientService.getClients().then(function (r) {
+        $scope.clients = r.clients;
+      });
     };
-
-    $scope.getClients = function () {
-      return $http({
-        method: "get",
-        url: "/services/client/list"
-      })
-        .then(function(response) {
-          return response.data;
-        });
-    };
-    /*
-     TODO debugger cette merde de services qui veulent pas se mettre !
-     */
-
-    $scope.getClients().then(function (r) {
-      $scope.clients = r.clients;
-      console.log(r);
-    });
 
   });

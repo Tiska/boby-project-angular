@@ -1,0 +1,19 @@
+<md-button ng-click="toggleMenu()" class="md-primary">
+  Menu
+</md-button>
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="menu">
+  <md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Menu</h1>
+  </md-toolbar>
+  <md-content class="md-padding">
+    <div layout="column" layout-align="start center">
+    <md-button ui-sref="home" class="md-primary">
+      Vendre
+    </md-button>
+    <md-button ui-sref="stocks" class="md-primary">
+      Stocks
+    </md-button>
+      </div>
+  </md-content>
+</md-sidenav>

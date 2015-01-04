@@ -2656,4 +2656,40 @@ input::-webkit-inner-spin-button {
   padding: 0 10px;
 }
 
+  .clientList {
+    padding:0px;
+    max-height: 500px;
+    overflow: auto;
+    width: 400px;
+    div.md-tile-content {
+      padding:5px;
+      color: @accent-color;
+      p:first-child {
+        font-weight:bold;
+        font-size: 1.4em;
+      }
+      &:hover {
+        background: @accent-color;
+        color:white;
+      }
+      &:active {
+        background: @accent-color-lighter;
+      }
+    }
+  }
+  .selected {
+    background: @accent-color;
+    color:white !important;
+  }
+  .total {
+    .tileHeight(1);
+    .tileWidth(2);
+    outline:1px solid @accent-color;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 35px;
+    padding-top: 30px;
+    color: @accent-color;
+  }
+
 

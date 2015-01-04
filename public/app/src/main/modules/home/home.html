@@ -1,20 +1,8 @@
 <div layout="column" layout-align="space-between" ng-init="new = false;existing = false;" layout-fill>
   <section layout="row" flex >
 
-    <md-button ng-click="toggleMenu()" class="md-primary">
-      Menu
-    </md-button>
-
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="menu">
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Menu</h1>
-      </md-toolbar>
-      <md-content class="md-padding">
-        <p hide-md show-gt-md>
-          Content
-        </p>
-      </md-content>
-    </md-sidenav>
+    <slide-menu>
+    </slide-menu>
 
     <div flex class="md-padding">
       <div layout="row" layout-fill layout-align="center center">
@@ -22,11 +10,11 @@
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter un client</p>
         </md-button>
-        <md-button class="md-colored" aria-label="New document" ng-click="new = false;existing = true;">
+        <md-button class="md-colored" aria-label="New document" ng-click="new = false;existing = true;loadClients();">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Client Existant</p>
         </md-button>
-        <md-button class="md-colored" aria-label="New document">
+        <md-button class="md-colored" aria-label="New document" ng-click="existing = false;new = false;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Sans client</p>
         </md-button>
@@ -75,12 +63,17 @@
             <md-button ng-click="clientFormSubmitted = true;submitClient();" class="md-raised md-warn">Enregistrer</md-button>
           </div>
         </form>
-        <md-list class="animate-show" ng-show="existing == true;">
-          <md-item ng-repeat="client in clients">
+        <md-list class="animate-show clientList" ng-show="existing == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="client in clients | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <h3>{{client.nom}}</h3>
-                <h4>{{client.prenom}}titi</h4>
+                <p>{{client.nom}} {{client.prenom}}</p>
+                <p>{{client.email}}</p>
               </div>
             </md-item-content>
           </md-item>
