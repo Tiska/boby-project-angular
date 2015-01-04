@@ -576,7 +576,7 @@ body {
     font-family: 'Segoe UI symbol', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
     height: 100vh;
     width: 100%;
-    overflow: hidden;
+//    overflow: hidden;
     background: url(../img/whiteMask.png),@backgroundImage;
     background-attachment: fixed;
     background-size: cover,100% 100%;
@@ -2395,44 +2395,6 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.ajoutClient, .paiementModale {
-
-    .ajoutClientList {
-        padding:0px;
-        max-height: 220px;
-        overflow: auto;
-        li {
-            padding:5px;
-            color: @accent-color;
-            p:first-child {
-                font-weight:bold;
-            }
-            &:hover {
-                background: @accent-color;
-                color:white;
-            }
-            &:active {
-                background: @accent-color-lighter;
-            }
-        }
-    }
-    .selected {
-      background: @accent-color;
-      color:white !important;
-    }
-    .total {
-        .tileHeight(1);
-        .tileWidth(2);
-        outline:1px solid @accent-color;
-        text-align: center;
-        margin-right: 10px;
-        font-size: 35px;
-        padding-top: 30px;
-        color: @accent-color;
-    }
-}
-
-
   /* ==========================================================================
 
    END GUICHET
@@ -2675,9 +2637,23 @@ input::-webkit-inner-spin-button {
 
 }
 
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+}
 
-  .ticketToPrint .ticket{
-    background: white;
-  }
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
 
 

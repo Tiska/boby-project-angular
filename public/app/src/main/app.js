@@ -8,7 +8,9 @@
  *
  * Main module of the application.
  */
-angular.module('caisseAppServices', []);
+angular.module('caisseServices', []);
+
+var services = 'caisseServices';
 
 angular
     .module('caisseApp', [
@@ -22,13 +24,12 @@ angular
         'ngMessages',
         'ui.router',
         'ui.sortable',
-        'caisseAppServices',
+        services,
         'home',
         'ngMaterial'
     ])
 
     // Décorateur du service $log
-    // TODO : envoyer les logs sur un serveur si le mode debug est activé pour l'utilisateur
     .config(function($provide) {
         $provide.decorator('$log', function ($delegate) {
                 return {

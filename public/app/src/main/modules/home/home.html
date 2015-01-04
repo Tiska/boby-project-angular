@@ -1,26 +1,28 @@
-<div layout="column" layout-fill>
-  <section layout="row" flex>
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+<div layout="column" layout-align="space-between" ng-init="new = false;existing = false;" layout-fill>
+  <section layout="row" flex >
+
+    <md-button ng-click="toggleMenu()" class="md-primary">
+      Menu
+    </md-button>
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="menu">
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        <h1 class="md-toolbar-tools">Menu</h1>
       </md-toolbar>
       <md-content class="md-padding">
-        <md-button ng-click="close()" class="md-primary" hide-gt-md>
-          Close Sidenav Left
-        </md-button>
         <p hide-md show-gt-md>
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
+          Content
         </p>
       </md-content>
     </md-sidenav>
+
     <div flex class="md-padding">
       <div layout="row" layout-fill layout-align="center center">
-        <md-button class="md-colored" aria-label="New document">
+        <md-button class="md-colored" aria-label="New document" ng-click="existing = false;new = true;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter un client</p>
         </md-button>
-        <md-button class="md-colored" aria-label="New document">
+        <md-button class="md-colored" aria-label="New document" ng-click="new = false;existing = true;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Client Existant</p>
         </md-button>
@@ -28,9 +30,61 @@
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Sans client</p>
         </md-button>
-        <md-button ng-click="toggleLeft()" class="md-primary">
-          Menu
-        </md-button>
+      </div>
+
+    </div>
+  </section>
+
+  <section layout="row" flex style="margin-top: 20px">
+    <div flex class="md-padding">
+      <div layout="row" layout-fill layout-align="center center">
+        <form class="animate-show" name="clientForm" ng-show="new == true;" novalidate style="width: 500px;">
+          <div class="formColumn">
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.nom.$invalid && clientFormSubmitted}">
+              Nom : <input type="text" class="form-control" maxlength="45" name="nom" autofocus="autofocus" ng-model="client.nom" required>
+              <div ng-messages="clientFormSubmitted && (clientForm.nom.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.prenom.$invalid && clientFormSubmitted}">
+              Prénom : <input type="text" class="form-control" maxlength="45" name="prenom" ng-model="client.prenom" required>
+              <div ng-messages="clientFormSubmitted && (clientForm.prenom.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.email.$invalid && clientFormSubmitted}">
+              Anniversaire :  <input type="text"  name="birthday" class="form-control" ng-model="client.birthday" data-autoclose="true" data-date-format="shortDate" data-date-type="iso" data-use-native="true" bs-datepicker required>
+              <div ng-messages="clientFormSubmitted && (clientForm.birthday.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.telephone.$invalid && clientFormSubmitted}">
+              Téléphone : <input type="number" class="form-control" maxlength="12" name="telephone" ng-model="client.telephone">
+              <div ng-messages="clientFormSubmitted && (clientForm.telephone.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.codePostal.$invalid && clientFormSubmitted}">
+              Code Postal : <input type="text" class="form-control" maxlength="10" name="phone" ng-model="client.codePostal">
+              <div ng-messages="clientFormSubmitted && (clientForm.codePostal.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.adresse.$invalid && clientFormSubmitted}">
+              Adresse : <input type="text" class="form-control" maxlength="100" name="adresse" ng-model="client.adresse">
+              <div ng-messages="clientFormSubmitted && (clientForm.adresse.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.ville.$invalid && clientFormSubmitted}">
+              Ville : <input type="text" class="form-control" maxlength="100" name="ville" ng-model="client.ville">
+              <div ng-messages="clientFormSubmitted && (clientForm.ville.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : clientForm.email.$invalid && clientFormSubmitted}">
+              Email : <input type="email" class="form-control" maxlength="50" name="email" ng-model="client.email">
+              <div ng-messages="clientFormSubmitted && (clientForm.email.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <md-button ng-click="clientFormSubmitted = true;submitClient();" class="md-raised md-warn">Enregistrer</md-button>
+          </div>
+        </form>
+        <md-list class="animate-show" ng-show="existing == true;">
+          <md-item ng-repeat="client in clients">
+            <md-item-content>
+              <div class="md-tile-content">
+                <h3>{{client.nom}}</h3>
+                <h4>{{client.prenom}}titi</h4>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
       </div>
     </div>
   </section>
