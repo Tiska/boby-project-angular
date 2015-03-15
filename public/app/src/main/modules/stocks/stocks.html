@@ -6,11 +6,11 @@
 
     <div flex class="md-padding">
       <div layout="row" layout-fill layout-align="center center">
-        <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;">
+        <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter un produit</p>
         </md-button>
-        <md-button class="md-colored" aria-label="New document" ng-click="loadPrestationCategories();produit = false;prestation = true;newPrestationCategorie = false;newProduitCategorie = false;">
+        <md-button class="md-colored" aria-label="New document" ng-click="loadPrestationCategories();produit = false;prestation = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter une prestation</p>
         </md-button>
@@ -98,6 +98,17 @@
         </md-list>
 
         <md-button style="margin-top: 20px" ng-show="creationProduit == true;" ng-click="newProduit = true;creationProduit = false;" class="md-raised md-warn">Ajouter un produit</md-button>
+
+        <form class="animate-show" name="produitForm" ng-show="newProduit == true;" novalidate style="width: 500px;">
+          <div class="formColumn">
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.nomProduit.$invalid && produitFormSubmitted}">
+              Nom : <input type="text" class="form-control" maxlength="100" name="nomProduit" autofocus="autofocus" ng-model="produit.nom" required>
+              <div ng-messages="produitFormSubmitted && (produitForm.nomProduit.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <md-button ng-click="produitFormSubmitted = true;submitPrestationCategorie();" class="md-raised md-warn">Enregistrer</md-button>
+            <md-button ng-click="newProduit = false;creationProduit = true;" class="md-raised md-warn">Annuler</md-button>
+          </div>
+        </form>
 
       </div>
     </div>
