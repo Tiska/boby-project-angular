@@ -96,4 +96,18 @@ angular.module('stocks')
       });
     };
 
+    $scope.loadProduits = function(){
+      StocksService.getProduitsByCaregorie($scope.idProductCategorie).then(function (r) {
+        $scope.produits = r.produits;
+      });
+    };
+
+    $scope.openProductCreation = function(idProductCategorie){
+      $scope.idProductCategorie = idProductCategorie;
+      $scope.loadProduits();
+      $scope.produit = false;
+      $scope.creationProduit = true;
+
+    };
+
   });

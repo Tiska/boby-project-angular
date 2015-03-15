@@ -5,7 +5,8 @@ angular.module('caisseServices').factory('StocksService',
       addProduitCategorie: addProduitCategorie,
       getProduitCategories: getProduitCategories,
       addPrestationCategorie: addPrestationCategorie,
-      getPrestationCategories: getPrestationCategories
+      getPrestationCategories: getPrestationCategories,
+      getProduitsByCaregorie: getProduitsByCaregorie
     };
 
     function addProduitCategorie(categorie) {
@@ -23,6 +24,16 @@ angular.module('caisseServices').factory('StocksService',
       return $http({
         method: "get",
         url: "/services/produit/categorie/list"
+      })
+        .then(function(response) {
+          return response.data;
+        });
+    };
+
+    function getProduitsByCaregorie (idCategorieProduit) {
+      return $http({
+        method: "get",
+        url: "/services/produit/list/byCategorie/"+idCategorieProduit
       })
         .then(function(response) {
           return response.data;

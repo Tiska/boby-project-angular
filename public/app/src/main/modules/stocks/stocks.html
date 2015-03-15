@@ -23,6 +23,8 @@
     <div flex class="md-padding">
       <div layout="column" layout-fill layout-align="space-around center">
 
+        <!--Catégories-->
+
         <md-list class="animate-show clientList" ng-show="prestation == true;">
           <div class="form-group searchBloc">
             <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
@@ -45,7 +47,7 @@
             <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
           </div>
           <md-item ng-repeat="produit in produitCategories | filter:searchText">
-            <md-item-content>
+            <md-item-content ng-click="openProductCreation(produit.id)">
               <div class="md-tile-content">
                 <p>{{produit.libelleProduitCategorie}}</p>
               </div>
@@ -77,6 +79,25 @@
             <md-button ng-click="newPrestationCategorie = false;prestation = true;" class="md-raised md-warn">Annuler</md-button>
           </div>
         </form>
+
+        <!--Création produit-->
+
+        <md-list class="animate-show clientList" ng-show="creationProduit == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="produit in produits | filter:searchText">
+            <md-item-content>
+              <div class="md-tile-content">
+                <p>{{produit.libelle}} | {{produit.stock}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <md-button style="margin-top: 20px" ng-show="creationProduit == true;" ng-click="newProduit = true;creationProduit = false;" class="md-raised md-warn">Ajouter un produit</md-button>
 
       </div>
     </div>
