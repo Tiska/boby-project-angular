@@ -110,4 +110,36 @@ angular.module('stocks')
 
     };
 
+    //création produit
+
+    $scope.submitProduit = function() {
+
+      if ($scope.produitForm.$valid) {
+        $scope.produit.idProduitCategorie =  $scope.idProductCategorie;
+        StocksService.addProduit($scope.produit).then(function (r) {
+          if (r.status == 0) {
+            $log.info('Création produit réussie ! ');
+            $mdToast.show(
+              $mdToast.simple()
+                .content('Création produit réussie !')
+                .position($scope.getToastPosition())
+                .hideDelay(800)
+            );
+
+            $scope.loadProduits();
+            $scope.newProduit = false;
+            $scope.creationProduit = true;
+
+          }
+          else {
+            $log.info("Echec de la création");
+            $scope.errorMessage = 'home.quick.errorcreate';
+          }
+        });
+
+      } else {
+        $log.info("Formulaire invalide !");
+      }
+    };
+
   });
