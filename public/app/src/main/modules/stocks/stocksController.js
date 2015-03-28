@@ -102,11 +102,25 @@ angular.module('stocks')
       });
     };
 
+    $scope.loadPrestations = function(){
+      StocksService.getPrestationsByCaregorie($scope.idPrestationCategorie).then(function (r) {
+        $scope.prestations = r.prestations;
+      });
+    };
+
     $scope.openProductCreation = function(idProductCategorie){
       $scope.idProductCategorie = idProductCategorie;
       $scope.loadProduits();
       $scope.produit = false;
       $scope.creationProduit = true;
+
+    };
+
+    $scope.openPrestationCreation = function(idPrestationCategorie){
+      $scope.idPrestationCategorie = idPrestationCategorie;
+      $scope.loadPrestations();
+      $scope.prestation = false;
+      $scope.creationPrestation = true;
 
     };
 
@@ -126,6 +140,7 @@ angular.module('stocks')
                 .hideDelay(800)
             );
 
+            $scope.produitForm.$pristine = false;
             $scope.loadProduits();
             $scope.newProduit = false;
             $scope.creationProduit = true;

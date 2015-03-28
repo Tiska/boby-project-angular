@@ -6,11 +6,11 @@
 
     <div flex class="md-padding">
       <div layout="row" layout-fill layout-align="center center">
-        <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;">
+        <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;newProduit = false;creationPrestation=false;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter un produit</p>
         </md-button>
-        <md-button class="md-colored" aria-label="New document" ng-click="loadPrestationCategories();produit = false;prestation = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;">
+        <md-button class="md-colored" aria-label="New document" ng-click="loadPrestationCategories();produit = false;prestation = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;newProduit = false;creationPrestation=false;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter une prestation</p>
         </md-button>
@@ -32,7 +32,7 @@
             <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
           </div>
           <md-item ng-repeat="prestation in prestationCategories | filter:searchText">
-            <md-item-content>
+            <md-item-content ng-click="openPrestationCreation(prestation.id)">
               <div class="md-tile-content">
                 <p>{{prestation.libellePrestationCategorie}}</p>
               </div>
@@ -98,6 +98,52 @@
         </md-list>
 
         <md-button style="margin-top: 20px" ng-show="creationProduit == true;" ng-click="newProduit = true;creationProduit = false;" class="md-raised md-warn">Ajouter un produit</md-button>
+
+        <form class="animate-show" name="produitForm" ng-show="newProduit == true;" novalidate style="width: 500px;">
+          <div class="formColumn">
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.libelle.$invalid && produitFormSubmitted}">
+              Libellé : <input type="text" class="form-control" maxlength="100" name="libelle" autofocus="autofocus" ng-model="produit.libelle" required>
+              <div ng-messages="produitFormSubmitted && (produitForm.libelle.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.stock.$invalid && produitFormSubmitted}">
+              Stock : <input type="number" class="form-control" name="stock" autofocus="autofocus" ng-model="produit.stock" required>
+              <div ng-messages="produitFormSubmitted && (produitForm.stock.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.prixAchat.$invalid && produitFormSubmitted}">
+              Prix d'achat : <input type="number" class="form-control" name="prixAchat" autofocus="autofocus" ng-model="produit.prixAchat" required>
+              <div ng-messages="produitFormSubmitted && (produitForm.prixAchat.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.prixVente.$invalid && produitFormSubmitted}">
+              Prix de vente (calculé si coefficiant) : <input type="number" class="form-control" name="prixVente" autofocus="autofocus" ng-model="produit.prixVente" >
+              <div ng-messages="produitFormSubmitted && (produitForm.prixVente.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.coefficiantVente.$invalid && produitFormSubmitted}">
+              Coefficiant de vente (calculé si prix de vente) : <input type="number" class="form-control" name="coefficiantVente" autofocus="autofocus" ng-model="produit.coefficiantVente" >
+              <div ng-messages="produitFormSubmitted && (produitForm.coefficiantVente.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            </div>
+            <md-button ng-click="produitFormSubmitted = true;submitProduit();" class="md-raised md-warn">Enregistrer</md-button>
+            <md-button ng-click="newProduit = false;creationProduit = true;" class="md-raised md-warn">Annuler</md-button>
+          </div>
+        </form>
+
+        <!--Création prestation-->
+
+        <md-list class="animate-show clientList" ng-show="creationPrestation == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="prestation in prestations | filter:searchText">
+            <md-item-content>
+              <div class="md-tile-content">
+                <p>{{prestation.libellePrestation}} | {{prestation.duree}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <md-button style="margin-top: 20px" ng-show="creationPrestation == true;" ng-click="newPrestation = true;creationPrestation = false;" class="md-raised md-warn">Ajouter un produit</md-button>
 
         <form class="animate-show" name="produitForm" ng-show="newProduit == true;" novalidate style="width: 500px;">
           <div class="formColumn">
