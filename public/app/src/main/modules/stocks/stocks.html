@@ -143,32 +143,24 @@
           </md-item>
         </md-list>
 
-        <md-button style="margin-top: 20px" ng-show="creationPrestation == true;" ng-click="newPrestation = true;creationPrestation = false;" class="md-raised md-warn">Ajouter un produit</md-button>
+        <md-button style="margin-top: 20px" ng-show="creationPrestation == true;" ng-click="newPrestation = true;creationPrestation = false;" class="md-raised md-warn">Ajouter une prestation</md-button>
 
-        <form class="animate-show" name="produitForm" ng-show="newProduit == true;" novalidate style="width: 500px;">
+        <form class="animate-show" name="prestationForm" ng-show="newPrestation == true;" novalidate style="width: 500px;">
           <div class="formColumn">
-            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.libelle.$invalid && produitFormSubmitted}">
-              Libellé : <input type="text" class="form-control" maxlength="100" name="libelle" autofocus="autofocus" ng-model="produit.libelle" required>
-              <div ng-messages="produitFormSubmitted && (produitForm.libelle.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : prestationForm.libelle.$invalid && prestationFormSubmitted}">
+              Libellé : <input type="text" class="form-control" maxlength="100" name="libelle" autofocus="autofocus" ng-model="prestation.libelle" required>
+              <div ng-messages="prestationFormSubmitted && (prestationForm.libelle.$error)" ng-messages-include="modules/common/error-messages.html"></div>
             </div>
-            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.stock.$invalid && produitFormSubmitted}">
-              Stock : <input type="number" class="form-control" name="stock" autofocus="autofocus" ng-model="produit.stock" required>
-              <div ng-messages="produitFormSubmitted && (produitForm.stock.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : prestationForm.prixVente.$invalid && prestationFormSubmitted}">
+              Duree : <input type="number" class="form-control" name="duree" autofocus="autofocus" ng-model="prestation.duree" >
+              <div ng-messages="prestationFormSubmitted && (prestationForm.duree.$error)" ng-messages-include="modules/common/error-messages.html"></div>
             </div>
-            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.prixAchat.$invalid && produitFormSubmitted}">
-              Prix d'achat : <input type="number" class="form-control" name="prixAchat" autofocus="autofocus" ng-model="produit.prixAchat" required>
-              <div ng-messages="produitFormSubmitted && (produitForm.prixAchat.$error)" ng-messages-include="modules/common/error-messages.html"></div>
+            <div class="form-group" ng-class="{'has-error has-feedback' : prestationForm.prix.$invalid && prestationFormSubmitted}">
+              Prix : <input type="number" class="form-control" name="prix" autofocus="autofocus" ng-model="prestation.prix" required>
+              <div ng-messages="prestationFormSubmitted && (prestationForm.prix.$error)" ng-messages-include="modules/common/error-messages.html"></div>
             </div>
-            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.prixVente.$invalid && produitFormSubmitted}">
-              Prix de vente (calculé si coefficiant) : <input type="number" class="form-control" name="prixVente" autofocus="autofocus" ng-model="produit.prixVente" >
-              <div ng-messages="produitFormSubmitted && (produitForm.prixVente.$error)" ng-messages-include="modules/common/error-messages.html"></div>
-            </div>
-            <div class="form-group" ng-class="{'has-error has-feedback' : produitForm.coefficiantVente.$invalid && produitFormSubmitted}">
-              Coefficiant de vente (calculé si prix de vente) : <input type="number" class="form-control" name="coefficiantVente" autofocus="autofocus" ng-model="produit.coefficiantVente" >
-              <div ng-messages="produitFormSubmitted && (produitForm.coefficiantVente.$error)" ng-messages-include="modules/common/error-messages.html"></div>
-            </div>
-            <md-button ng-click="produitFormSubmitted = true;submitProduit();" class="md-raised md-warn">Enregistrer</md-button>
-            <md-button ng-click="newProduit = false;creationProduit = true;" class="md-raised md-warn">Annuler</md-button>
+            <md-button ng-click="prestationFormSubmitted = true;submitPrestation();" class="md-raised md-warn">Enregistrer</md-button>
+            <md-button ng-click="newPrestation = false;creationPrestation = true;" class="md-raised md-warn">Annuler</md-button>
           </div>
         </form>
 

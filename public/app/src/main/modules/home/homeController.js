@@ -9,7 +9,7 @@
  */
 angular.module('home')
   .controller('HomeController',
-  function ($rootScope, $scope, $mdToast, $log,$http, ClientService) {
+  function ($rootScope, $scope, $mdToast, $log,$http, ClientService,$state) {
 
     $scope.toastPosition = {
       bottom: false,
@@ -55,6 +55,10 @@ angular.module('home')
       ClientService.getClients().then(function (r) {
         $scope.clients = r.clients;
       });
+    };
+
+    $scope.goSales = function(){
+      $state.go('sale');
     };
 
   });

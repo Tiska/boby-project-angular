@@ -27,6 +27,7 @@ angular
         services,
         'home',
         'stocks',
+        'sale',
         'ngMaterial'
     ])
 

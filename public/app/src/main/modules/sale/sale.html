@@ -1,0 +1,95 @@
+<div layout="column" layout-align="space-between" layout-fill>
+  <section layout="row" flex >
+
+    <slide-menu>
+    </slide-menu>
+
+    <div flex class="md-padding">
+      <div layout="row" layout-fill layout-align="center center">
+        <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;newProduit = false;creationPrestation=false;">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Ajouter un produit au panier</p>
+        </md-button>
+        <md-button class="md-colored" aria-label="New document" ng-click="loadPrestationCategories();produit = false;prestation = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;newProduit = false;creationPrestation=false;">
+          <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
+          <p>Ajouter une prestation au panier</p>
+        </md-button>
+      </div>
+
+    </div>
+  </section>
+
+  <section layout="row" flex style="margin-top: 20px">
+    <div flex class="md-padding">
+      <div layout="column" layout-fill layout-align="space-around center">
+
+        <!--Catégories-->
+
+        <md-list class="animate-show clientList" ng-show="prestation == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="prestation in prestationCategories | filter:searchText">
+            <md-item-content ng-click="openPrestationCreation(prestation.id)">
+              <div class="md-tile-content">
+                <p>{{prestation.libellePrestationCategorie}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <md-list class="animate-show clientList" ng-show="produit == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="produit in produitCategories | filter:searchText">
+            <md-item-content ng-click="openProductCreation(produit.id)">
+              <div class="md-tile-content">
+                <p>{{produit.libelleProduitCategorie}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <!--Liste produit-->
+
+        <md-list class="animate-show clientList" ng-show="creationProduit == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="produit in produits | filter:searchText">
+            <md-item-content>
+              <div class="md-tile-content">
+                <p>{{produit.libelleProduit}} | {{produit.stock}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+        <!--Liste prestation-->
+
+        <md-list class="animate-show clientList" ng-show="creationPrestation == true;">
+          <div class="form-group searchBloc">
+            <input type="search" class="form-control" placeholder="{{'common.search' | translate}}" ng-model="searchText">
+            <span class="glyphicon glyphicon-search pull-right searchIcon"></span>
+            <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
+          </div>
+          <md-item ng-repeat="prestation in prestations | filter:searchText">
+            <md-item-content>
+              <div class="md-tile-content">
+                <p>{{prestation.libellePrestation}} | {{prestation.duree}}</p>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+
+      </div>
+    </div>
+  </section>
+</div>

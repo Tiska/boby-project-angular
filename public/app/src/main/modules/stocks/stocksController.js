@@ -157,4 +157,37 @@ angular.module('stocks')
       }
     };
 
+    //création prestation
+
+    $scope.submitPrestation = function() {
+
+      if ($scope.prestationForm.$valid) {
+        $scope.prestation.idPrestationCategorie =  $scope.idPrestationCategorie;
+        StocksService.addPrestation($scope.prestation).then(function (r) {
+          if (r.status == 0) {
+            $log.info('Création prestation réussie ! ');
+            $mdToast.show(
+              $mdToast.simple()
+                .content('Création prestation réussie !')
+                .position($scope.getToastPosition())
+                .hideDelay(800)
+            );
+
+            $scope.prestationForm.$pristine = false;
+            $scope.loadPrestations();
+            $scope.newPrestation = false;
+            $scope.creationPrestation = true;
+
+          }
+          else {
+            $log.info("Echec de la création");
+            $scope.errorMessage = 'home.quick.errorcreate';
+          }
+        });
+
+      } else {
+        $log.info("Formulaire invalide !");
+      }
+    };
+
   });

@@ -8,6 +8,7 @@ angular.module('caisseServices').factory('StocksService',
       getPrestationCategories: getPrestationCategories,
       getProduitsByCaregorie: getProduitsByCaregorie,
       addProduit: addProduit,
+      addPrestation: addPrestation,
       getPrestationsByCaregorie: getPrestationsByCaregorie
     };
 
@@ -83,5 +84,16 @@ angular.module('caisseServices').factory('StocksService',
           return response.data;
         });
     };
+
+    function addPrestation(prestation) {
+      return $http({
+        method: "post",
+        url: "/services/prestation/",
+        data: prestation
+      })
+        .then(function(response) {
+          return response.data;
+        });
+    }
 
   });
