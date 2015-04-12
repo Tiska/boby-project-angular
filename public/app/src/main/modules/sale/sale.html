@@ -14,8 +14,30 @@
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter une prestation au panier</p>
         </md-button>
-      </div>
 
+        <style type="text/css">
+          .tg  {border-collapse:collapse;border-spacing:0;border-color:#aaa;}
+          .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;}
+          .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;border-top-width:1px;border-bottom-width:1px;}
+          .tg .tg-z2zr{background-color:#FCFBE3}
+        </style>
+        <table class="tg">
+          <tr>
+            <th class="tg-031e">Libellé</th>
+            <th class="tg-031e">Prix unitaire</th>
+            <th class="tg-031e">Quantitée</th>
+            <th class="tg-031e">Réduction</th>
+            <th class="tg-031e">Total avec réduction</th>
+          </tr>
+          <tr>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -66,7 +88,7 @@
           <md-item ng-repeat="produit in produits | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <p>{{produit.libelleProduit}} | {{produit.stock}}</p>
+                <p>{{produit.libelleProduit}} | {{produit.stock}} en stock</p>
               </div>
             </md-item-content>
           </md-item>
@@ -83,7 +105,7 @@
           <md-item ng-repeat="prestation in prestations | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <p>{{prestation.libellePrestation}} | {{prestation.duree}}</p>
+                <p>{{prestation.libellePrestation}} | {{prestation.duree}} mn</p>
               </div>
             </md-item-content>
           </md-item>
@@ -92,4 +114,5 @@
       </div>
     </div>
   </section>
+
 </div>

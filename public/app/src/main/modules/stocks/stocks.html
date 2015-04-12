@@ -91,7 +91,7 @@
           <md-item ng-repeat="produit in produits | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <p>{{produit.libelleProduit}} | {{produit.stock}}</p>
+                <p>{{produit.libelleProduit}} | {{produit.stock}} en stock</p>
               </div>
             </md-item-content>
           </md-item>
@@ -137,7 +137,7 @@
           <md-item ng-repeat="prestation in prestations | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <p>{{prestation.libellePrestation}} | {{prestation.duree}}</p>
+                <p>{{prestation.libellePrestation}} | {{prestation.duree}} mn</p>
               </div>
             </md-item-content>
           </md-item>
