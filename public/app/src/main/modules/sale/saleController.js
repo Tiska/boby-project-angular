@@ -23,6 +23,26 @@ angular.module('sale')
         .join(' ');
     };
 
+    //lignes de panier à mixer avec celles du back
+    $scope.lignesPanier = [];
+
+    //création d'une ligne de panier
+    $scope.addLignePanier = function(idPrestation,idProduit,libelle,prix) {
+      $scope.lignesPanier.push(
+        {
+          idPrestation: idPrestation,
+          idProduit: idProduit,
+          quantitee: 1,
+          libelle: libelle,
+          prix: prix
+        }
+      )
+    };
+
+    $scope.removeLine = function(index) {
+      $scope.lignesPanier.splice(index, 1);
+    };
+
     /*
      Envoir du formulaire de création de categ
      */

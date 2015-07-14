@@ -4,7 +4,7 @@
     <slide-menu>
     </slide-menu>
 
-    <div flex class="md-padding">
+    <div flex class="md-padding" style="padding-top: 15px;">
       <div layout="row" layout-fill layout-align="center center">
         <md-button class="md-colored" aria-label="New document" ng-click="loadProduitCategories();prestation = false;produit = true;newPrestationCategorie = false;newProduitCategorie = false;creationProduit=false;newProduit = false;creationPrestation=false;">
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
@@ -14,36 +14,6 @@
           <md-icon icon="resources/img/picto_women.jpg" style="width: 200px; height: 200px;"></md-icon>
           <p>Ajouter une prestation au panier</p>
         </md-button>
-
-        <style type="text/css">
-          .tg  {border-collapse:collapse;border-spacing:0;border-color:#aaa;}
-          .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;}
-          .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;border-top-width:1px;border-bottom-width:1px;}
-          .tg .tg-z2zr{background-color:#FCFBE3}
-        </style>
-        <table class="tg">
-          <tr>
-            <th class="tg-031e">Libellé</th>
-            <th class="tg-031e">Prix unitaire</th>
-            <th class="tg-031e">Quantitée</th>
-            <th class="tg-031e">Réduction</th>
-            <th class="tg-031e">Total avec réduction</th>
-          </tr>
-          <tr>
-            <td class="tg-z2zr">qsdfqs</td>
-            <td class="tg-z2zr">qsdf</td>
-            <td class="tg-z2zr">qsd</td>
-            <td class="tg-z2zr">qsdf</td>
-            <td class="tg-z2zr">qsdf</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section layout="row" flex style="margin-top: 20px">
-    <div flex class="md-padding">
-      <div layout="column" layout-fill layout-align="space-around center">
 
         <!--Catégories-->
 
@@ -86,7 +56,7 @@
             <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
           </div>
           <md-item ng-repeat="produit in produits | filter:searchText">
-            <md-item-content>
+            <md-item-content ng-click="addLignePanier(null,produit.id,produit.libelleProduit,produit.prixVente)">
               <div class="md-tile-content">
                 <p><span>{{produit.libelleProduit}}</span> | <span>{{produit.stock}} en stock</span> | <span>{{produit.prixVente}} €</span></p>
               </div>
@@ -103,13 +73,49 @@
             <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
           </div>
           <md-item ng-repeat="prestation in prestations | filter:searchText">
-            <md-item-content>
+            <md-item-content ng-click="addLignePanier(prestation.id,null,prestation.libellePrestation,prestation.prix)">
               <div class="md-tile-content">
-                <p>{{prestation.libellePrestation}} | {{prestation.duree}} mn</p>
+                <p><span>{{prestation.libellePrestation}}</span> | <span>{{prestation.duree}} mn</span> | <span>{{prestation.prix}} €</span></p>
               </div>
             </md-item-content>
           </md-item>
         </md-list>
+
+      </div>
+    </div>
+  </section>
+
+  <section layout="row" flex style="margin-top: 20px">
+    <div flex class="md-padding">
+      <div layout="column" layout-fill layout-align="space-around center">
+
+        <style type="text/css">
+          .tg  {border-collapse:collapse;border-spacing:0;border-color:#aaa;}
+          .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;}
+          .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;border-top-width:1px;border-bottom-width:1px;}
+          .tg .tg-z2zr{background-color:#FCFBE3}
+        </style>
+        <table class="tg">
+          <tr>
+            <th class="tg-031e">Libellé</th>
+            <th class="tg-031e">Prix unitaire</th>
+            <th class="tg-031e">Quantitée</th>
+            <th class="tg-031e">Réduction</th>
+            <th class="tg-031e">Type Réduction</th>
+            <th class="tg-031e">Total avec réduction</th>
+            <th class="tg-031e">Supprimer</th>
+          </tr>
+          <tr ng-repeat="ligne in lignesPanier">
+            <td class="tg-z2zr">{{ligne.libelle}}</td>
+            <td class="tg-z2zr">{{ligne.prix}}</td>
+            <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="quantitee" autofocus="autofocus" ng-model="ligne.quantitee"></td>
+            <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="reduction" ng-model="ligne.reduction"></td>
+            <td class="tg-z2zr"><select><option value="1">Pourcentage</option> <option value="2">Fixe</option> </select></td>
+            <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="prix" ng-model="ligne.prixReduit"></td>
+            <td class="tg-z2zr"> <md-button ng-click="removeLine($index)" class="md-raised md-warn">Supprimer la ligne</md-button></td>
+          </tr>
+        </table>
+
 
       </div>
     </div>
