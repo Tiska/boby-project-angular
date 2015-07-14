@@ -30,11 +30,11 @@
             <th class="tg-031e">Total avec réduction</th>
           </tr>
           <tr>
-            <td class="tg-z2zr"></td>
-            <td class="tg-z2zr"></td>
-            <td class="tg-z2zr"></td>
-            <td class="tg-z2zr"></td>
-            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr">qsdfqs</td>
+            <td class="tg-z2zr">qsdf</td>
+            <td class="tg-z2zr">qsd</td>
+            <td class="tg-z2zr">qsdf</td>
+            <td class="tg-z2zr">qsdf</td>
           </tr>
         </table>
       </div>
@@ -88,7 +88,7 @@
           <md-item ng-repeat="produit in produits | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <p>{{produit.libelleProduit}} | {{produit.stock}} en stock</p>
+                <p><span>{{produit.libelleProduit}}</span> | <span>{{produit.stock}} en stock</span> | <span>{{produit.prixVente}} €</span></p>
               </div>
             </md-item-content>
           </md-item>

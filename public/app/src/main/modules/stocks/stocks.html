@@ -91,7 +91,7 @@
           <md-item ng-repeat="produit in produits | filter:searchText">
             <md-item-content>
               <div class="md-tile-content">
-                <p>{{produit.libelleProduit}} | {{produit.stock}} en stock</p>
+                <p><span>{{produit.libelleProduit}}</span> | <span>{{produit.stock}} en stock</span> | <span>{{produit.prixVente}} €</span></p>
               </div>
             </md-item-content>
           </md-item>
