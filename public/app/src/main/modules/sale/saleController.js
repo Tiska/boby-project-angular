@@ -27,12 +27,26 @@ angular.module('sale')
     $scope.lignesPanier = [];
 
     //création d'une ligne de panier
-    $scope.addLignePanier = function(idPrestation,idProduit,libelle,prix) {
+    $scope.addLignePanier = function(idPrestation,idProduit,libelle,prix, quantitee) {
+
+     var q = 50;
+
+     //cas où on a un produit
+     if(quantitee != undefined){
+       q = quantitee
+     }
+
+      var qTab = [];
+
+      for (var i = 1; i <= q; i++) {
+        qTab.push(i);
+      }
+
       $scope.lignesPanier.push(
         {
           idPrestation: idPrestation,
           idProduit: idProduit,
-          quantitee: 1,
+          qTab: qTab,
           libelle: libelle,
           prix: prix
         }
@@ -113,5 +127,16 @@ angular.module('sale')
       $scope.creationPrestation = true;
 
     };
+
+    $scope.calculReduction = function(typeReduction, reduction, prix, quantitee, indexLigne){
+      var prixReduit = prix * quantitee;
+      if(typeReduction == 2){
+        prixReduit -= reduction;
+      }
+      if(typeReduction == 1){
+        prixReduit -= (prixReduit *(reduction/100));
+      }
+      $scope.lignesPanier[indexLigne].prixReduit = prixReduit;
+    }
 
   });

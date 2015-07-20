@@ -70,7 +70,7 @@
             <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
           </div>
           <md-item ng-repeat="client in clients | filter:searchText">
-            <md-item-content>
+            <md-item-content ng-click="goSales(client.id)">
               <div class="md-tile-content">
                 <p>{{client.nom}} {{client.prenom}}</p>
                 <p>{{client.email}}</p>

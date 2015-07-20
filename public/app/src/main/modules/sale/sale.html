@@ -56,7 +56,7 @@
             <!--<p><span class="number">{{$parent.contactNumberResult}}</span><span>{{'common.results' | translate}}</span></p>-->
           </div>
           <md-item ng-repeat="produit in produits | filter:searchText">
-            <md-item-content ng-click="addLignePanier(null,produit.id,produit.libelleProduit,produit.prixVente)">
+            <md-item-content ng-click="addLignePanier(null,produit.id,produit.libelleProduit,produit.prixVente,produit.stock)">
               <div class="md-tile-content">
                 <p><span>{{produit.libelleProduit}}</span> | <span>{{produit.stock}} en stock</span> | <span>{{produit.prixVente}} €</span></p>
               </div>
@@ -108,10 +108,10 @@
           <tr ng-repeat="ligne in lignesPanier">
             <td class="tg-z2zr">{{ligne.libelle}}</td>
             <td class="tg-z2zr">{{ligne.prix}}</td>
-            <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="quantitee" autofocus="autofocus" ng-model="ligne.quantitee"></td>
+            <td class="tg-z2zr"><select style="width: 65px !important;" ng-change="calculReduction(ligne.typeReduction,ligne.reduction,ligne.prix,ligne.quantitee,$index)" ng-options="q for q in ligne.qTab" class="form-control" name="quantitee" autofocus="autofocus" ng-model="ligne.quantitee"></select></td>
             <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="reduction" ng-model="ligne.reduction"></td>
-            <td class="tg-z2zr"><select><option value="1">Pourcentage</option> <option value="2">Fixe</option> </select></td>
-            <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="prix" ng-model="ligne.prixReduit"></td>
+            <td class="tg-z2zr"><select ng-model="ligne.typeReduction" ng-change="calculReduction(ligne.typeReduction,ligne.reduction,ligne.prix,ligne.quantitee,$index)"><option value="1">Pourcentage</option> <option value="2">Fixe</option> </select></td>
+            <td class="tg-z2zr"><span style="width: 65px !important;" class="form-control">{{ligne.prixReduit}}</span></td>
             <td class="tg-z2zr"> <md-button ng-click="removeLine($index)" class="md-raised md-warn">Supprimer la ligne</md-button></td>
           </tr>
         </table>

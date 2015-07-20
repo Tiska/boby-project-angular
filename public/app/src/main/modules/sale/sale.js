@@ -3,7 +3,7 @@ angular.module('sale', [])
     .config(function ($stateProvider) {
        $stateProvider
             .state('sale', {
-                url: '/',
+                url: '/{idContact}',
                 templateUrl: 'modules/sale/sale.html',
                 controller: 'SaleController'
             });

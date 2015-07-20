@@ -39,6 +39,7 @@ angular.module('home')
                 .position($scope.getToastPosition())
                 .hideDelay(800)
             );
+            $scope.goSales(r.idClient);
           }
           else {
             $log.info("Echec de la création");
@@ -57,8 +58,8 @@ angular.module('home')
       });
     };
 
-    $scope.goSales = function(){
-      $state.go('sale');
+    $scope.goSales = function(idClient){
+      $state.go('sale', {idClient: idClient});
     };
 
   });
