@@ -107,16 +107,16 @@
           </tr>
           <tr ng-repeat="ligne in lignesPanier">
             <td class="tg-z2zr">{{ligne.libelle}}</td>
-            <td class="tg-z2zr">{{ligne.prix}}</td>
+            <td class="tg-z2zr">{{ligne.prix}} €</td>
             <td class="tg-z2zr"><select style="width: 65px !important;" ng-change="calculReduction(ligne.typeReduction,ligne.reduction,ligne.prix,ligne.quantitee,$index)" ng-options="q for q in ligne.qTab" class="form-control" name="quantitee" autofocus="autofocus" ng-model="ligne.quantitee"></select></td>
             <td class="tg-z2zr"><input type="number" style="width: 65px !important;" class="form-control" name="reduction" ng-model="ligne.reduction"></td>
             <td class="tg-z2zr"><select ng-model="ligne.typeReduction" ng-change="calculReduction(ligne.typeReduction,ligne.reduction,ligne.prix,ligne.quantitee,$index)"><option value="1">Pourcentage</option> <option value="2">Fixe</option> </select></td>
-            <td class="tg-z2zr"><span style="width: 65px !important;" class="form-control">{{ligne.prixReduit}}</span></td>
+            <td class="tg-z2zr"><span style="width: 65px !important;" class="form-control">{{ligne.prixReduit}} €</span></td>
             <td class="tg-z2zr"> <md-button ng-click="removeLine($index)" class="md-raised md-warn">Supprimer la ligne</md-button></td>
           </tr>
         </table>
 
-
+        <md-button style="margin-top: 10px" ng-click="submitPanier();" class="md-raised md-warn">Valider le Panier</md-button>
       </div>
     </div>
   </section>
