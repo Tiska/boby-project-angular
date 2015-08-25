@@ -9,7 +9,11 @@
  */
 angular.module('sale')
   .controller('SaleController',
-  function ($rootScope, $scope, $mdSidenav,$mdToast, $log,StocksService) {
+  function ($rootScope, $scope, $mdSidenav,$mdToast, $log,StocksService, $stateParams, ClientService) {
+
+    ClientService.getClient($stateParams.idContact).then(function (r) {
+        $scope.points = r.points;
+    });
 
     $scope.toastPosition = {
       bottom: false,
@@ -128,6 +132,8 @@ angular.module('sale')
 
     };
 
+    $scope.total=0;
+
     $scope.calculReduction = function(typeReduction, reduction, prix, quantitee, indexLigne){
       var prixReduit = prix * quantitee;
       if(typeReduction == 2){
@@ -137,6 +143,14 @@ angular.module('sale')
         prixReduit -= (prixReduit *(reduction/100));
       }
       $scope.lignesPanier[indexLigne].prixReduit = prixReduit;
+
+      $scope.total=0;
+      $scope.lignesPanier.forEach(function(line){
+        if(line.prixReduit != undefined){
+          $scope.total+=line.prixReduit;
+        }
+      });
+
     }
 
   });

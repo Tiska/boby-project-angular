@@ -59,7 +59,7 @@ angular.module('home')
     };
 
     $scope.goSales = function(idClient){
-      $state.go('sale', {idClient: idClient});
+      $state.go('sale', {idContact: idClient});
     };
 
   });

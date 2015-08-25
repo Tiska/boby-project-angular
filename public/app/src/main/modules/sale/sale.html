@@ -85,9 +85,12 @@
     </div>
   </section>
 
-  <section layout="row" flex style="margin-top: 20px">
+  <section layout="row" flex style="margin-top: 20px; overflow: scroll; max-height: 500px">
     <div flex class="md-padding">
       <div layout="column" layout-fill layout-align="space-around center">
+
+        <md-button style="margin-top: 10px; margin-bottom: 10px" ng-click="submitPanier();" class="md-raised md-warn">Valider le Panier</md-button>
+        <md-button style="margin-top: 10px; margin-bottom: 10px" ng-click="utiliserPoints();" class="md-raised md-warn">Utiliser les {{points}} points points points</md-button>
 
         <style type="text/css">
           .tg  {border-collapse:collapse;border-spacing:0;border-color:#aaa;}
@@ -114,8 +117,27 @@
             <td class="tg-z2zr"><span style="width: 65px !important;" class="form-control">{{ligne.prixReduit}} €</span></td>
             <td class="tg-z2zr"> <md-button ng-click="removeLine($index)" class="md-raised md-warn">Supprimer la ligne</md-button></td>
           </tr>
+          <tr>
+            <th class="tg-031e"></th>
+            <th class="tg-031e"></th>
+            <th class="tg-031e"></th>
+            <th class="tg-031e"></th>
+            <th class="tg-031e"></th>
+            <th class="tg-031e"></th>
+            <th class="tg-031e">Total avec réduction</th>
+          </tr>
+          <tr>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"></td>
+            <td class="tg-z2zr"><span style="width: 65px !important;" class="form-control">{{total}} €</span></td>
+          </tr>
         </table>
 
+        <md-button style="margin-top: 10px;margin-bottom: 10px" ng-click="utiliserPoints();" class="md-raised md-warn">Utiliser les {{points}} points points points</md-button>
         <md-button style="margin-top: 10px" ng-click="submitPanier();" class="md-raised md-warn">Valider le Panier</md-button>
       </div>
     </div>
