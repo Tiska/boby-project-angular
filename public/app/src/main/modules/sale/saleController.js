@@ -9,7 +9,7 @@
  */
 angular.module('sale')
   .controller('SaleController',
-  function ($rootScope, $scope, $mdSidenav,$mdToast, $log,StocksService, $stateParams, ClientService) {
+  function ($rootScope, $scope, $mdSidenav, $mdToast, $log, StocksService, $stateParams, ClientService, SaleService, $state) {
 
     ClientService.getClient($stateParams.idContact).then(function (r) {
         $scope.points = r.points;
@@ -64,25 +64,28 @@ angular.module('sale')
     /*
      Envoir du formulaire de création de categ
      */
-    $scope.submitProduitCategorie = function() {
+    $scope.submitPanier = function() {
 
       if ($scope.produitCategorieForm.$valid) {
 
-        StocksService.addProduitCategorie($scope.categorieProduit).then(function (r) {
+        var basket = {
+          lignesPanier: $scope.lignesPanier,
+          idClient: $stateParams.idContact
+        };
+
+        SaleService.addLignePanier(basket).then(function (r) {
           if (r.status == 0) {
-            $log.info('Création catégorie produit réussie ! ');
+            $log.info('Paiement panier réussie ! ');
             $mdToast.show(
               $mdToast.simple()
-                .content('Création catégorie produit réussie !')
+                .content('Paiement panier réussie !')
                 .position($scope.getToastPosition())
                 .hideDelay(800)
             );
-            $scope.loadProduitCategories();
-            $scope.newProduitCategorie = false;
-            $scope.produit = true;
+            $state.go('home', {});
           }
           else {
-            $log.info("Echec de la création");
+            $log.info("Echec du Paiement");
             $scope.errorMessage = 'home.quick.errorcreate';
           }
         });
@@ -143,6 +146,7 @@ angular.module('sale')
         prixReduit -= (prixReduit *(reduction/100));
       }
       $scope.lignesPanier[indexLigne].prixReduit = prixReduit;
+      $scope.lignesPanier[indexLigne].typeReduction = typeReduction;
 
       $scope.total=0;
       $scope.lignesPanier.forEach(function(line){
